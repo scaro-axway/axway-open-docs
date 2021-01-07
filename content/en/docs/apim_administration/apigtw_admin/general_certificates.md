@@ -115,6 +115,9 @@ Click to export the subject's private key to a PEM or DER-encoded file.
 
 ### Private key provided by OpenSSL engine
 
+{{< alert title="" color="warning" >}}Engines from OpenSSL 1.0 are not compatible with OpenSSL 1.1.\
+When configuring and using an OpenSSL engine, make sure it has been made for version 1.1.{{< /alert >}}
+
 If the private key that corresponds to the public key in the certificate is provided by an OpenSSL engine, select **Private key provided by OpenSSL Engine**.
 
 Configure the following fields to associate a key provided by the OpenSSL engine with the current certificate:
@@ -138,6 +141,9 @@ If the private key that corresponds to the public key stored in the certificate 
 To use the API Gateway's PKCS#11 engine to access objects in an external HSM, the corresponding HSM provider and certificate realms must also be configured. For more details, see [Configure HSMs and certificate realms](#configure-hsms-and-certificate-realms).
 
 ## Configure HSMs and certificate realms
+
+{{< alert title="" color="warning" >}}OpenSSL 1.1 is no longer supporting FIPS and requires use of X.509 cryptographic operations.\
+HSM hardware (and its corresponding driver) must be compatible with those tequirements.{{< /alert >}}
 
 *Certificate realms* are abstractions of private keys and public key certificates, which mean that policy developers do not need to enter HSM-specific configuration such as slots and key labels. Instead, if a private key exists on an HSM, the developer can configure the certificate to show that its private key uses a specific certificate realm, which is simply an alias for a private key (for example, `JMS Keys`).
 
